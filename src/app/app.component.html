@@ -1,0 +1,11 @@
+<div class="list">
+  <div class="loading" *ngIf="!data">
+    Загрузка...
+  </div>
+
+  <div class="cards" *ngIf="data">
+    <div *ngFor="let card of data" class="card">
+      <app-card [card]="card"></app-card>
+    </div>
+  </div>
+</div>
