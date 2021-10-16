@@ -1,0 +1,27 @@
+<!-- <swiper
+    [slidesPerView]="1"
+    (swiper)="onSwiper($event)"
+    (sliderChange)="onSlideChange()"
+>
+    <ng-template swiperSlide>{{images[0]}}</ng-template>
+    <ng-template swiperSlide>{{images[0]}}</ng-template>
+    <ng-template swiperSlide>{{images[0]}}</ng-template>
+</swiper> -->
+
+<div class="card-fullscreen__image-slider">
+    <swiper [slidesPerView]="1" (swiper)="onSwiper($event)"
+        (slideChange)="onSlideChange()">
+        <ng-template swiperSlide *ngFor="let image of images">
+            <div class="card-fullscreen__image-slider__active">
+                <img src="{{image}}" />
+            </div>
+        </ng-template>
+    </swiper>
+    <ng-container >
+        <div class="card-fullscreen__image-slider__thumbs">
+            <div *ngFor="let thumb of thumbs; let i = index" id="{{i}}" (click)="changeSlide(i)" [ngClass]="{cardThumb:1, thumbactive:thumb.isActive}">
+                <img  src="{{thumb.src}}" />
+            </div>
+        </div>
+    </ng-container>
+</div>

@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 export class ApiService implements OnInit {
   private url: string = environment.API;
   public data = new Subject();
-
+  
   constructor(private http: HttpClient) {
     this.getEntities()
       .subscribe(response => this.data.next(response))

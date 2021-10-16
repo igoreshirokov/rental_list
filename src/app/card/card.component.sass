@@ -1,0 +1,199 @@
+$cardbg: #311360
+// font-sizes
+$cardTitle: 24px
+
+.card
+    margin: 0 auto
+    box-shadow: 0 3px 3px 0px rgba(0,0,0,0.5)
+    width: 100%
+    max-width: 360px
+    border-radius: 10px
+    background: $cardbg
+    overflow: hidden
+    .card-image
+        position: relative
+    img
+        width: 100%
+        height: 240px
+        object-fit: cover
+        border-top-left-radius: 10px
+        border-top-right-radius: 10px
+
+.card
+    &:hover
+        cursor: pointer
+        transition: .3s
+        transform: scale(1.01)
+        .card-image
+            .card-image__button-details
+                display: block
+                opacity: 1
+                transform: translate(-50%,-50%) scale(1)
+        img
+            opacity: .1
+
+        // .card-content
+            // position: absolute
+            // width: 100%
+            // height: 100%
+            // top: 0
+            // background: $cardbg
+.card-image__button-details
+    transition: .2s
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%) scale(0)
+    padding: 10px 20px
+    border: 3px solid #fff
+    opacity: 0
+.card-content
+    padding: 20px
+
+.card-attributes__title
+    font-size: $cardTitle
+    height: 60px
+
+.card-attributes__caption
+    opacity: .5
+    margin-right: 10px
+
+.card-attributes
+    display: block
+    div
+        display: inline
+
+.card-fullscreen__wrapper
+    width: 100%
+    height: 100%
+    background: rgba(0,0,0,0.5)
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 10
+    overflow: scroll
+
+.card-fullscreen__dialog
+    max-width: 920px
+    width: calc(100% - 40px)
+    position: absolute
+    top: 100px
+    left: 50%
+    transform: translate(-50%, 0)
+    border-radius: 10px
+    box-shadow: 0 3px 3px 1px rgba(0,0,0,0.5)
+    color: $cardbg
+    background: #fff
+    &::after
+        content: ''
+        width: 100%
+        height: 100px
+        position: absolute
+
+
+
+.close
+    position: absolute
+    right: 20px
+    top: 20px
+    width: 60px
+    height: 60px
+    cursor: pointer
+    z-index: 10
+    // box-sizing: border-box
+    &::after
+        content: ''
+        position: absolute
+        left: 50%
+        top: 0
+        width: 3px
+        transform-origin: center
+        height: 60px
+        background: #fff
+        transform: rotate(-45deg)
+    &::before
+        content: ''
+        transform-origin: center
+        position: absolute
+        width: 3px
+        left: 50%
+        top: 0
+        height: 60px
+        background: #fff
+        transform: rotate(45deg)
+
+
+.card-fullscreen__content
+    padding: 20px
+
+.card-fullscreen__title
+    font-weight: 900
+    font-size: 36px
+    height: 90px
+
+.card-fullscreen__attributes
+    max-width: 360px
+    width: 100%
+    div
+        display: flex
+        justify-content: space-between
+
+.card-fullscreen__details-wrapper
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    gap: 20px
+    justify-content: space-between
+    @media screen and (max-width: 700px)
+        flex-direction: column
+        align-items: center
+
+.card-fullscreen__relationships
+    display: flex
+    @media screen and (max-width: 700px)
+        flex-direction: column
+        align-items: center
+        justify-content: center
+
+.card-fullscreen__relations
+    width: 100%
+    max-width: 360px
+    position: relative
+    display: flex
+    justify-content: flex-start
+    align-items: flex-start
+    flex-direction: column
+
+.card-button
+    width: auto
+    border-radius: 10px
+    border: none
+    background: #190736
+    color: #fff
+    box-shadow: 0 3px 3px 1px rgba(0,0,0,0.5)
+    margin-top: 20px
+    padding: 20px 40px
+    cursor: pointer
+    &:hover
+        transform: scale(1.01)
+
+@keyframes fadeInAnim
+    0%
+        transform: translate(-0%, 0)
+    100%
+        transform: translate(-50%,0%)
+
+.card-fullscreen__dialog
+    animation-delay: 3s
+    animation: fadeInAnim .3s both
+
+@media screen and (max-width: 667px)
+    .card-button
+        width: 100%
+        display: block
+        position: relative
+    .card-fullscreen__attributes, .card-fullscreen__relationships
+        width: 100%
+
+.card-fullscreen__wrapper__non-active
+    display: none

@@ -1,18 +1,67 @@
 
-<div class="card-type">{{card.type}}</div>
-<div class="card-id">{{card.id}}</div>
-<div class="card-attributes__title">{{card.attributes.title}}</div>
-<div class="card-attributes__rooms">{{card.attributes.rooms}}</div>
-<div class="card-attributes__address-city">{{card.attributes.address.city}}</div>
-<div class="card-attributes__address-street">{{card.attributes.address.street}}</div>
-<div class="card-attributes__address-house">{{card.attributes.address.house}}</div>
-<div class="card-attributes__address-room">{{card.attributes.address.room}}</div>
-<div class="card-attributes__area">{{card.attributes.area}}</div>
-<div class="card-attributes__unit">{{card.attributes.unit}}</div>
-<div class="card-attributes__unit">{{card.attributes.unit}}</div>
-<div class="card-relationships__type">{{card.relationships.type}}</div>
-<div class="card-relationships__id">{{card.relationships.id}}</div>
-<div class="card-relationships__attributes-first_name">{{card.relationships.attributes.first_name}}</div>
-<div class="card-relationships__attributes-last_name">{{card.relationships.attributes.last_name}}</div>
-<div class="card-relationships__attributes-middle_name">{{card.relationships.attributes.middle_name}}</div>
+<div (click)="closeDetails($event, card.id)" id="card-fullscreen__id-{{card.id}}" class="card-fullscreen__wrapper card-fullscreen__wrapper__non-active">
+    <div class="card-fullscreen__dialog">
+        <div class="close"></div>
+        <app-slider [images]="card.images"></app-slider>
+        <div class="card-fullscreen__content">
+            <div class="card-fullscreen__title">{{card.attributes.title}}</div>
+            <div class="card-fullscreen__details-wrapper">
+                <div class="card-fullscreen__attributes">
+                    <div class="card-fullscreen__type"><span class="card-attributes__caption">тип
+                            недвижимости:</span>{{cardType}}</div>
+                    <div class="card-fullscreen__attributes__rooms"><span
+                            class="card-attributes__caption">комнат:</span>{{card.attributes.rooms}}</div>
+                    <div class="card-fullscreen__attributes__city"><span
+                            class="card-attributes__caption">город:</span>{{card.attributes.address.city}}</div>
+                    <div class="card-fullscreen__attributes__address"><span
+                            class="card-attributes__caption">адрес:</span>{{card.attributes.address.street}},
+                        {{card.attributes.address.house}}-{{card.attributes.address.room}}</div>
+                    <div class="card-fullscreen__attributes__area"><span
+                            class="card-attributes__caption">площадь:</span>{{card.attributes.area}}
+                        {{card.attributes.unit}}</div>
+                </div>
+                <div class="card-fullscreen__relationships">
+                    <div class="card-fullscreen__relations">
+                        <span
+                            class="card-attributes__caption">{{card.relationships.type}}:</span>
 
+                            {{card.relationships.attributes.last_name}}
+                            {{card.relationships.attributes.first_name}}
+                            {{card.relationships.attributes.middle_name}}
+                            <button class="card-button">связаться с агентом</button>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<div (click)="openDetails('card-fullscreen__id-' + card.id)" class="card">
+    <div class="card-image">
+        <div class="card-image__button-details">
+            подробнее
+        </div>
+        <img src="{{card.images[0]}}" alt="{{card.attributes.title}}" />
+    </div>
+    <div class="card-content">
+        <div class="card-attributes__title">{{card.attributes.title}}</div>
+        <div class="card-attributes">
+            <div class="card-type"><span class="card-attributes__caption">тип:</span>{{cardType}}</div>,
+            <div class="card-attributes__rooms">{{card.attributes.rooms}}-комн.</div>
+        </div>
+        <div class="card-attributes">
+            <span class="card-attributes__caption">адрес:</span>
+            <div class="card-attributes__address-city">г.{{card.attributes.address.city}}</div>,
+            <div class="card-attributes__address-street">{{card.attributes.address.street}}</div>
+        </div>
+        <div class="card-attributes">
+            <span class="card-attributes__caption">площадь:</span>
+            <div class="card-attributes__area">{{card.attributes.area}}</div>
+            <div class="card-attributes__unit">{{card.attributes.unit}}</div>
+        </div>
+    </div>
+</div>
